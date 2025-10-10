@@ -77,7 +77,14 @@ const Create = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
-      <LinearGradient colors={["rgba(0,0,0,0.4)", "rgb(0,0,0)"]} style={styles.flex1}>
+      <LinearGradient
+        colors={[
+          COLORS.primaryGradientColor1,
+          COLORS.primaryGradientColor2,
+          COLORS.secondaryGradientColor1,
+        ]}
+        style={styles.flex1}
+      >
         <SafeAreaView style={{ flex: 1 }}>
           <ScrollView
             style={{ flex: 1, marginTop: 20 }}
@@ -92,14 +99,19 @@ const Create = () => {
               {pickedImage ? (
                 <View style={styles.imagePreview}>
                   <Pressable style={styles.closeButton} onPress={() => setPickedImage(null)}>
-                    <Ionicons name="close" size={22} color="white" />
+                    <Ionicons name="close" size={22} color={COLORS.buttonText} />
                   </Pressable>
 
                   <Image source={{ uri: pickedImage }} style={styles.image} />
                 </View>
               ) : (
                 <View style={styles.imagePreview}>
-                  <Ionicons name="image-outline" size={200} style={styles.image} color={"white"} />
+                  <Ionicons
+                    name="image-outline"
+                    size={200}
+                    style={styles.image}
+                    color={COLORS.textMuted}
+                  />
                 </View>
               )}
             </View>
@@ -110,7 +122,7 @@ const Create = () => {
                 iconName="image"
                 textSize={17}
                 size={20}
-                color="#d7d9e2ff"
+                color={COLORS.textPrimary}
                 onPress={handleAddFromGallery}
                 isLoading={isLoading}
                 width="48%"
@@ -120,7 +132,7 @@ const Create = () => {
                 iconName="camera"
                 textSize={17}
                 size={20}
-                color="#d7d9e2ff"
+                color={COLORS.textPrimary}
                 onPress={handleCapture}
                 width="48%"
               />
@@ -156,7 +168,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 30,
     fontWeight: "600",
-    color: "white",
+    color: COLORS.textPrimary,
     textAlign: "center",
     marginBottom: 20,
   },
@@ -177,7 +189,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     borderWidth: 1,
     borderStyle: "dashed",
-    borderColor: "#646772",
+    borderColor: COLORS.borderColor,
     borderRadius: 10,
     width: 220,
     height: 260,
@@ -200,7 +212,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   imageText: {
-    color: "white",
+    color: COLORS.textPrimary,
     fontSize: 14,
   },
 });

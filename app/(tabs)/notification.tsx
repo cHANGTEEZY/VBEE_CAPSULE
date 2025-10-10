@@ -1,10 +1,17 @@
+import { useAuth, useUser } from "@clerk/clerk-expo";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const Notification = () => {
+  const { signOut } = useAuth();
+
   return (
     <View style={styles.container}>
       <Text>Notification</Text>
+
+      <Pressable onPress={() => signOut()} style={{ marginTop: 20 }}>
+        <Text>Sign Out</Text>
+      </Pressable>
     </View>
   );
 };

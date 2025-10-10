@@ -78,20 +78,18 @@ const MemoryForm = ({ onSubmit, initialValues }: MemoryFormProps) => {
             onBlur={onBlur}
             error={!!errors.title}
             style={styles.input}
-            outlineStyle={{ borderColor: errors.title ? "#ff6b6b" : "#646772" }}
-            activeOutlineColor="#BFCFE7"
-            textColor="#ffffff"
-            // selectionColor=":"
-
+            outlineStyle={{ borderColor: errors.title ? "#ff6b6b" : COLORS.borderColor }}
+            activeOutlineColor={COLORS.highlight}
+            textColor={COLORS.textPrimary}
             theme={{
               colors: {
-                onSurfaceVariant: "#a0a0a0",
-                background: "rgba(0,0,0,0.7)",
-                outline: "black",
+                onSurfaceVariant: COLORS.textSecondary,
+                background: COLORS.inputBg,
+                outline: COLORS.borderColor,
               },
             }}
             placeholder="Give your memory a title"
-            placeholderTextColor="#7d8797"
+            placeholderTextColor={COLORS.textMuted}
           />
         )}
       />
@@ -110,20 +108,20 @@ const MemoryForm = ({ onSubmit, initialValues }: MemoryFormProps) => {
             onBlur={onBlur}
             error={!!errors.description}
             style={styles.input}
-            outlineStyle={{ borderColor: errors.description ? "#ff6b6b" : "#646772" }}
-            activeOutlineColor="#BFCFE7"
-            textColor="#ffffff"
+            outlineStyle={{ borderColor: errors.description ? "#ff6b6b" : COLORS.borderColor }}
+            activeOutlineColor={COLORS.highlight}
+            textColor={COLORS.textPrimary}
             multiline
             numberOfLines={4}
             theme={{
               colors: {
-                onSurfaceVariant: "#a0a0a0",
-                background: "rgba(0,0,0,0.7)",
-                outline: "black",
+                onSurfaceVariant: COLORS.textSecondary,
+                background: COLORS.inputBg,
+                outline: COLORS.borderColor,
               },
             }}
             placeholder="Describe your memory"
-            placeholderTextColor="#7d8797"
+            placeholderTextColor={COLORS.textMuted}
           />
         )}
       />
@@ -141,19 +139,19 @@ const MemoryForm = ({ onSubmit, initialValues }: MemoryFormProps) => {
             onChangeText={onChange}
             onBlur={onBlur}
             style={styles.input}
-            outlineStyle={{ borderColor: "#646772" }}
-            activeOutlineColor="#BFCFE7"
-            textColor="#ffffff"
+            outlineStyle={{ borderColor: COLORS.borderColor }}
+            activeOutlineColor={COLORS.highlight}
+            textColor={COLORS.textPrimary}
             theme={{
               colors: {
-                onSurfaceVariant: "#a0a0a0",
-                background: "rgba(0,0,0,0.7)",
-                outline: "black",
+                onSurfaceVariant: COLORS.textSecondary,
+                background: COLORS.inputBg,
+                outline: COLORS.borderColor,
               },
             }}
             placeholder="Where did this happen?"
-            placeholderTextColor="#7d8797"
-            left={<TextInput.Icon icon="map-marker" color="#BFCFE7" />}
+            placeholderTextColor={COLORS.textMuted}
+            left={<TextInput.Icon icon="map-marker" color={COLORS.highlight} />}
           />
         )}
       />
@@ -171,18 +169,18 @@ const MemoryForm = ({ onSubmit, initialValues }: MemoryFormProps) => {
                 value={formatDate(value)}
                 editable={false}
                 style={styles.input}
-                outlineStyle={{ borderColor: "#646772" }}
-                activeOutlineColor="#BFCFE7"
-                textColor="#ffffff"
+                outlineStyle={{ borderColor: COLORS.borderColor }}
+                activeOutlineColor={COLORS.highlight}
+                textColor={COLORS.textPrimary}
                 theme={{
                   colors: {
-                    onSurfaceVariant: "#a0a0a0",
-                    background: "rgba(0,0,0,0.7)",
-                    outline: "black",
+                    onSurfaceVariant: COLORS.textSecondary,
+                    background: COLORS.inputBg,
+                    outline: COLORS.borderColor,
                   },
                 }}
-                left={<TextInput.Icon icon="calendar" color="#BFCFE7" />}
-                right={<TextInput.Icon icon="chevron-down" color="#BFCFE7" />}
+                left={<TextInput.Icon icon="calendar" color={COLORS.highlight} />}
+                right={<TextInput.Icon icon="chevron-down" color={COLORS.highlight} />}
               />
             </Pressable>
             {showDatePicker && (
@@ -211,19 +209,19 @@ const MemoryForm = ({ onSubmit, initialValues }: MemoryFormProps) => {
             onChangeText={onChange}
             onBlur={onBlur}
             style={styles.input}
-            outlineStyle={{ borderColor: "#646772" }}
-            activeOutlineColor="#BFCFE7"
-            textColor="#ffffff"
+            outlineStyle={{ borderColor: COLORS.borderColor }}
+            activeOutlineColor={COLORS.highlight}
+            textColor={COLORS.textPrimary}
             theme={{
               colors: {
-                onSurfaceVariant: "#a0a0a0",
-                background: "rgba(0,0,0,0.7)",
-                outline: "black",
+                onSurfaceVariant: COLORS.textSecondary,
+                background: COLORS.inputBg,
+                outline: COLORS.borderColor,
               },
             }}
             placeholder="e.g., family, vacation, birthday"
-            placeholderTextColor="#7d8797"
-            left={<TextInput.Icon icon="tag-multiple" color="#BFCFE7" />}
+            placeholderTextColor={COLORS.textMuted}
+            left={<TextInput.Icon icon="tag-multiple" color={COLORS.highlight} />}
           />
         )}
       />
@@ -240,20 +238,20 @@ const MemoryForm = ({ onSubmit, initialValues }: MemoryFormProps) => {
             onChangeText={onChange}
             onBlur={onBlur}
             style={styles.input}
-            outlineStyle={{ borderColor: "#646772" }}
-            activeOutlineColor="#BFCFE7"
-            textColor="#ffffff"
+            outlineStyle={{ borderColor: COLORS.borderColor }}
+            activeOutlineColor={COLORS.highlight}
+            textColor={COLORS.textPrimary}
             multiline
             numberOfLines={3}
             theme={{
               colors: {
-                onSurfaceVariant: "#a0a0a0",
-                background: "rgba(0,0,0,0.7)",
-                outline: "black",
+                onSurfaceVariant: COLORS.textSecondary,
+                background: COLORS.inputBg,
+                outline: COLORS.borderColor,
               },
             }}
             placeholder="Any additional thoughts or details"
-            placeholderTextColor="#7d8797"
+            placeholderTextColor={COLORS.textMuted}
           />
         )}
       />
@@ -265,8 +263,8 @@ const MemoryForm = ({ onSubmit, initialValues }: MemoryFormProps) => {
         loading={isSubmitting}
         disabled={isSubmitting}
         style={styles.submitButton}
-        buttonColor="#BFCFE7"
-        textColor="#000000"
+        buttonColor={COLORS.buttonBg}
+        textColor={COLORS.buttonText}
         contentStyle={styles.submitButtonContent}
       >
         Save Memory
@@ -284,7 +282,7 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   input: {
-    backgroundColor: "transparent",
+    backgroundColor: COLORS.inputBg,
   },
   errorText: {
     color: "#ff6b6b",

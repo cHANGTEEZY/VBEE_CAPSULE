@@ -4,6 +4,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { ScreenHeight, ScreenWidth } from "@/utils/dimensions";
 import Loader from "@/components/Loader";
 import { GlassView } from "expo-glass-effect";
+import { COLORS } from "@/utils/colors";
 
 type CreateBarProps = {
   barText: string;
@@ -39,11 +40,11 @@ const CreateBar = ({
       >
         {isLoading ? (
           <>
-            <Loader size="small" color="white" />
+            <Loader size="small" color={COLORS.buttonBg} />
           </>
         ) : (
           <>
-            <Text style={[{ fontSize: textSize }, styles.textStyles]}>{barText}</Text>
+            <Text style={[{ fontSize: textSize, color }, styles.textStyles]}>{barText}</Text>
             <Ionicons name={iconName} size={size} color={color} />
           </>
         )}
@@ -77,7 +78,6 @@ const styles = StyleSheet.create({
   },
 
   textStyles: {
-    color: "#bdbec2ff",
     fontWeight: "500",
   },
 });
