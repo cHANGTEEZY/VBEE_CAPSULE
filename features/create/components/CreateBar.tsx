@@ -2,6 +2,8 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { ScreenHeight, ScreenWidth } from "@/utils/dimensions";
+import Loader from "@/components/Loader";
+import { GlassView } from "expo-glass-effect";
 
 type CreateBarProps = {
   barText: string;
@@ -11,6 +13,7 @@ type CreateBarProps = {
   color: string;
   onPress?: () => void;
   isLoading?: boolean;
+  width?: string | number;
 };
 
 const CreateBar = ({
@@ -21,22 +24,30 @@ const CreateBar = ({
   color,
   onPress,
   isLoading,
+  width = "100%",
 }: CreateBarProps) => {
   return (
-    <Pressable disabled={isLoading} onPress={onPress} style={styles.container}>
-      <View
+    <Pressable disabled={isLoading} onPress={onPress} style={[styles.container, { width }]}>
+      <GlassView
         style={[
           styles.barContainer,
           {
-            backgroundColor: isLoading ? "#7d8797ff" : "#BFCFE7",
+            backgroundColor: "transparent",
           },
         ]}
+        glassEffectStyle="regular"
       >
-        <Text style={[{ fontSize: textSize }, styles.textStyles]}>
-          {barText}
-        </Text>
-        <Ionicons name={iconName} size={size} color={color} />
-      </View>
+        {isLoading ? (
+          <>
+            <Loader size="small" color="white" />
+          </>
+        ) : (
+          <>
+            <Text style={[{ fontSize: textSize }, styles.textStyles]}>{barText}</Text>
+            <Ionicons name={iconName} size={size} color={color} />
+          </>
+        )}
+      </GlassView>
     </Pressable>
   );
 };
@@ -45,8 +56,7 @@ export default CreateBar;
 
 const styles = StyleSheet.create({
   container: {
-    width: ScreenWidth * 1.0,
-    paddingHorizontal: 20,
+    paddingHorizontal: 5,
   },
 
   barContainer: {
@@ -58,6 +68,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginVertical: 5,
     height: ScreenHeight * 0.06,
+    width: "100%",
     elevation: 15,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
@@ -66,7 +77,7 @@ const styles = StyleSheet.create({
   },
 
   textStyles: {
-    color: "#646772",
+    color: "#bdbec2ff",
     fontWeight: "500",
   },
 });
