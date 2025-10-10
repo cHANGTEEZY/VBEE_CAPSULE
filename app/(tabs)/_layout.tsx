@@ -13,9 +13,9 @@ const BottomTabsNavigation = () => {
         <Label>Create</Label>
         <Icon sf={{ default: "plus.app.fill", selected: "plus.app" }} />
       </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="notification">
-        <Label>Notification</Label>
-        <Icon sf={{ default: "bell.badge", selected: "bell.badge.fill" }} />
+      <NativeTabs.Trigger name="profile">
+        <Label>Profile</Label>
+        <Icon sf={{ default: "person", selected: "person.fill" }} />
       </NativeTabs.Trigger>
     </NativeTabs>
   );

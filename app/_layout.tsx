@@ -14,7 +14,7 @@ export default function RootLayout() {
       tokenCache={tokenCache}
     >
       <QueryClientProvider client={queryClient}>
-        <StatusBar style="auto" />
+        <StatusBar style="dark" />
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen

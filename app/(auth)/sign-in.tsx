@@ -7,6 +7,7 @@ import {
   Platform,
   Alert,
   Pressable,
+  ImageBackground,
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -19,6 +20,8 @@ import { useSignIn } from "@clerk/clerk-expo";
 import { COLORS } from "@/utils/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
+
+const backgroundImage = require("../../assets/images/memory.jpg");
 
 // Validation schema
 const signInSchema = z.object({
@@ -83,145 +86,145 @@ export default function SignIn() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
-      <LinearGradient
-        colors={[
-          COLORS.primaryGradientColor1,
-          COLORS.primaryGradientColor2,
-          COLORS.secondaryGradientColor1,
-        ]}
-        style={styles.gradient}
-      >
-        <SafeAreaView style={styles.safeArea}>
-          <ScrollView
-            contentContainerStyle={styles.scrollContent}
-            keyboardShouldPersistTaps="handled"
-            showsVerticalScrollIndicator={false}
-          >
-            {/* Header */}
-            <View style={styles.header}>
-              <Text style={styles.title}>Welcome Back</Text>
-              <Text style={styles.subtitle}>Sign in to continue to VBEE Capsule</Text>
-            </View>
-
-            {/* Sign In Form */}
-            <View style={styles.form}>
-              {/* Email Input */}
-              <Controller
-                control={control}
-                name="email"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <TextInput
-                    label="Email"
-                    mode="outlined"
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    error={!!errors.email}
-                    style={styles.input}
-                    outlineStyle={{ borderColor: errors.email ? "#ff6b6b" : COLORS.borderColor }}
-                    activeOutlineColor={COLORS.highlight}
-                    textColor={COLORS.textPrimary}
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    theme={{
-                      colors: {
-                        onSurfaceVariant: COLORS.textSecondary,
-                        background: COLORS.inputBg,
-                        outline: COLORS.borderColor,
-                      },
-                    }}
-                    left={<TextInput.Icon icon="email" color={COLORS.highlight} />}
-                  />
-                )}
-              />
-              {errors.email && <Text style={styles.errorText}>{errors.email.message}</Text>}
-
-              {/* Password Input */}
-              <Controller
-                control={control}
-                name="password"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <TextInput
-                    label="Password"
-                    mode="outlined"
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    error={!!errors.password}
-                    secureTextEntry={!showPassword}
-                    style={styles.input}
-                    outlineStyle={{ borderColor: errors.password ? "#ff6b6b" : COLORS.borderColor }}
-                    activeOutlineColor={COLORS.highlight}
-                    textColor={COLORS.textPrimary}
-                    theme={{
-                      colors: {
-                        onSurfaceVariant: COLORS.textSecondary,
-                        background: COLORS.inputBg,
-                        outline: COLORS.borderColor,
-                      },
-                    }}
-                    left={<TextInput.Icon icon="lock" color={COLORS.highlight} />}
-                    right={
-                      <TextInput.Icon
-                        icon={showPassword ? "eye-off" : "eye"}
-                        color={COLORS.highlight}
-                        onPress={() => setShowPassword(!showPassword)}
-                      />
-                    }
-                  />
-                )}
-              />
-              {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
-
-              {/* Forgot Password */}
-              <Pressable onPress={() => Alert.alert("Info", "Password reset coming soon!")}>
-                <Text style={styles.forgotPassword}>Forgot Password?</Text>
-              </Pressable>
-
-              {/* Sign In Button */}
-              <Button
-                mode="contained"
-                onPress={handleSubmit(onSignIn)}
-                loading={isLoading}
-                disabled={isLoading}
-                style={styles.signInButton}
-                buttonColor={COLORS.buttonBg}
-                textColor={COLORS.buttonText}
-                contentStyle={styles.buttonContent}
-              >
-                Sign In
-              </Button>
-
-              {/* Divider */}
-              <View style={styles.divider}>
-                <View style={styles.dividerLine} />
-                <Text style={styles.dividerText}>OR</Text>
-                <View style={styles.dividerLine} />
+      <ImageBackground source={backgroundImage} resizeMode="cover" style={{ flex: 1 }}>
+        <LinearGradient
+          colors={["rgba(4, 5, 5, 0.3)", "rgba(66, 67, 69, 0.3)", "rgba(6, 27, 60, 0.3)"]}
+          style={styles.gradient}
+        >
+          <SafeAreaView style={styles.safeArea}>
+            <ScrollView
+              contentContainerStyle={styles.scrollContent}
+              keyboardShouldPersistTaps="handled"
+              showsVerticalScrollIndicator={false}
+            >
+              {/* Header */}
+              <View style={styles.header}>
+                <Text style={styles.title}>Welcome Back</Text>
+                <Text style={styles.subtitle}>Your memories are waiting to be rediscovered</Text>
               </View>
 
-              {/* Google Sign In */}
-              <Button
-                mode="outlined"
-                onPress={onGoogleSignIn}
-                style={styles.googleButton}
-                textColor={COLORS.textPrimary}
-                contentStyle={styles.buttonContent}
-                icon={() => <Ionicons name="logo-google" size={20} color={COLORS.highlight} />}
-              >
-                Continue with Google
-              </Button>
+              {/* Sign In Form */}
+              <View style={styles.form}>
+                {/* Email Input */}
+                <Controller
+                  control={control}
+                  name="email"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                      label="Email"
+                      mode="outlined"
+                      value={value}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      error={!!errors.email}
+                      style={styles.input}
+                      outlineStyle={{ borderColor: errors.email ? "#ff6b6b" : COLORS.borderColor }}
+                      activeOutlineColor={COLORS.highlight}
+                      textColor={COLORS.textPrimary}
+                      keyboardType="email-address"
+                      autoCapitalize="none"
+                      theme={{
+                        colors: {
+                          onSurfaceVariant: COLORS.textSecondary,
+                          background: COLORS.inputBg,
+                          outline: COLORS.borderColor,
+                        },
+                      }}
+                      left={<TextInput.Icon icon="email" color={COLORS.highlight} />}
+                    />
+                  )}
+                />
+                {errors.email && <Text style={styles.errorText}>{errors.email.message}</Text>}
 
-              {/* Sign Up Link */}
-              <View style={styles.signUpContainer}>
-                <Text style={styles.signUpText}>Don't have an account? </Text>
-                <Pressable onPress={() => router.push("/(auth)/sign-up")}>
-                  <Text style={styles.signUpLink}>Sign Up</Text>
+                {/* Password Input */}
+                <Controller
+                  control={control}
+                  name="password"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                      label="Password"
+                      mode="outlined"
+                      value={value}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      error={!!errors.password}
+                      secureTextEntry={!showPassword}
+                      style={styles.input}
+                      outlineStyle={{
+                        borderColor: errors.password ? "#ff6b6b" : COLORS.borderColor,
+                      }}
+                      activeOutlineColor={COLORS.highlight}
+                      textColor={COLORS.textPrimary}
+                      theme={{
+                        colors: {
+                          onSurfaceVariant: COLORS.textSecondary,
+                          background: COLORS.inputBg,
+                          outline: COLORS.borderColor,
+                        },
+                      }}
+                      left={<TextInput.Icon icon="lock" color={COLORS.highlight} />}
+                      right={
+                        <TextInput.Icon
+                          icon={showPassword ? "eye-off" : "eye"}
+                          color={COLORS.highlight}
+                          onPress={() => setShowPassword(!showPassword)}
+                        />
+                      }
+                    />
+                  )}
+                />
+                {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
+
+                {/* Forgot Password */}
+                <Pressable onPress={() => Alert.alert("Info", "Password reset coming soon!")}>
+                  <Text style={styles.forgotPassword}>Forgot Password?</Text>
                 </Pressable>
+
+                {/* Sign In Button */}
+                <Button
+                  mode="contained"
+                  onPress={handleSubmit(onSignIn)}
+                  loading={isLoading}
+                  disabled={isLoading}
+                  style={styles.signInButton}
+                  buttonColor={COLORS.buttonBg}
+                  textColor={COLORS.buttonText}
+                  contentStyle={styles.buttonContent}
+                >
+                  Sign In
+                </Button>
+
+                {/* Divider */}
+                <View style={styles.divider}>
+                  <View style={styles.dividerLine} />
+                  <Text style={styles.dividerText}>OR</Text>
+                  <View style={styles.dividerLine} />
+                </View>
+
+                {/* Google Sign In */}
+                <Button
+                  mode="outlined"
+                  onPress={onGoogleSignIn}
+                  style={styles.googleButton}
+                  textColor={"white"}
+                  contentStyle={styles.buttonContent}
+                  icon={() => <Ionicons name="logo-google" size={20} color={"black"} />}
+                >
+                  Continue with Google
+                </Button>
+
+                {/* Sign Up Link */}
+                <View style={styles.signUpContainer}>
+                  <Text style={styles.signUpText}>Don't have an account? </Text>
+                  <Pressable onPress={() => router.push("/(auth)/sign-up")}>
+                    <Text style={styles.signUpLink}>Sign Up</Text>
+                  </Pressable>
+                </View>
               </View>
-            </View>
-          </ScrollView>
-        </SafeAreaView>
-      </LinearGradient>
+            </ScrollView>
+          </SafeAreaView>
+        </LinearGradient>
+      </ImageBackground>
     </KeyboardAvoidingView>
   );
 }
@@ -248,12 +251,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: "bold",
-    color: COLORS.textPrimary,
+    color: "white",
     marginBottom: 8,
   },
   subtitle: {
     fontSize: 16,
-    color: COLORS.textSecondary,
+    color: "rgba(224, 225, 225, 1)",
   },
   form: {
     gap: 16,
@@ -305,12 +308,12 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   signUpText: {
-    color: COLORS.textSecondary,
-    fontSize: 14,
+    color: "white",
+    fontSize: 18,
   },
   signUpLink: {
     color: COLORS.highlight,
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: "600",
   },
 });
